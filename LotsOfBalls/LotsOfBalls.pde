@@ -1,20 +1,21 @@
 //declare variables
-float x, y, velX, velY, diam, x2, y2, velX2, velY2;
+float [] x = new float[2];
+float [] y = new float[2];
+float [] velX = new float[2];
+float [] velY = new float[2];
+float [] diam = new float[2];
 
 void setup() {
   //set size of canvas
   size(800, 600);
 
   //initialize variables
-  x = width/2;
-  y = height/2;
-  diam = 80;
-  velX = random(-5, 5);
-  velY = random(-5, 5);
-  x2 = width/2;
-  y2 = height/2;
-  velX2 = random(-5,5);
-  velY2 = random(-5,5);
+  x[1] = width/2;
+  y[1] = height/2;
+  diam[1] = 80;
+  velX[1] = random(-5, 5);
+  velY[1] = random(-5, 5);
+
 }
 
 void draw() {
@@ -22,34 +23,21 @@ void draw() {
   background(0);
 
   //draw ball
-  ellipse(x, y, diam, diam);
-  ellipse(x2, y2, diam, diam);
+  ellipse(x[1], y[1], diam[1], diam[1]);
 
   //add velocity to position
-  x += velX;
-  y += velY;
-  x2 += velX2;
-  y2 += velY2;
+  x[1] += velX[1];
+  y[1] += velY[1];
 
   //bounce ball if it hits walls
-  if (x + diam/2 >= width) {
-    velX = -abs(velX);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x - diam/2 <= 0) {
-    velX = abs(velX);     //if the ball hits the left wall, assign x velocity the positive version of itself
+  if (x[1] + diam[1]/2 >= width) {
+    velX[1] = -abs(velX[1]);    //if the ball hits the right wall, assign x velocity the negative version of itself
+  } else if (x[1] - diam[1]/2 <= 0) {
+    velX[1] = abs(velX[1]);     //if the ball hits the left wall, assign x velocity the positive version of itself
   }
-  if (y + diam/2 >= height) {
-    velY = -abs(velY);
-  } else if (y - diam/2 <= 0) {
-    velY = abs(velY);
-  }
-  if (x2 + diam/2 >= width) {
-    velX2 = -abs(velX2);    //if the ball hits the right wall, assign x velocity the negative version of itself
-  } else if (x2 - diam/2 <= 0) {
-    velX2 = abs(velX2);     //if the ball hits the left wall, assign x velocity the positive version of itself
-  }
-  if (y2 + diam/2 >= height) {
-    velY2 = -abs(velY2);
-  } else if (y2 - diam/2 <= 0) {
-    velY2 = abs(velY2);
+  if (y[1] + diam[1]/2 >= height) {
+    velY[1] = -abs(velY[1]);
+  } else if (y[1] - diam[1]/2 <= 0) {
+    velY[1] = abs(velY[1]);
   }
 }
